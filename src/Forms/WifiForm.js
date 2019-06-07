@@ -148,7 +148,7 @@ class WifiForm extends React.Component {
                        placeholder={""}/>
             </FormGroup>
             <FormGroup>
-                <label htmlFor="key">Key</label>
+                <label htmlFor="key">Password</label>
                 <input onChange={this.handleInputChange}
                        value={this.state.key}
                        type="text"

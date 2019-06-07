@@ -132,10 +132,15 @@ class SettingsForm extends React.Component {
          * @type {{}}
          */
         return <form onSubmit={this.onSubmit} className={"form text--left"}>
-            <h4>Settings</h4>
+            <h4>Wi-Fi Access Point (AP) Settings</h4>
             {error}
+          <FormGroup>
+            <label htmlFor="ssid">SSID network name</label>
+            <input onChange={this.handleInputChange} value={"aurora-netconnect"} type="text" disabled={true} tabIndex={1}
+                   name="ssid" id="ssid"/>
+          </FormGroup>
             <FormGroup>
-                <label htmlFor="timeout">{"AP Timeout"} [s]</label>
+                <label htmlFor="timeout">AP visibility timeout [s]</label>
                 <input onChange={this.handleInputChange} value={this.state.timeout} type="number" tabIndex={1}
                        name="timeout" id="timeout"
                        autoFocus={true} placeholder={""}/>
@@ -146,7 +151,7 @@ class SettingsForm extends React.Component {
                        minLength={8}
                        name="password"
                        id="password"
-                       placeholder={"Enter password or leave blank"}/>
+                       placeholder="Enter password or leave blank"/>
             </FormGroup>
             <div className="form--group text--center">
                 {(this.state.expectingResponse) ? <LoadingComponent/> :

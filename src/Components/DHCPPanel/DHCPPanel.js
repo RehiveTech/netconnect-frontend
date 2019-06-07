@@ -125,7 +125,7 @@ class DHCPPanel extends React.Component {
                         <Row>
                             <Col xs className=" text--left">
                                 <FormGroup>
-                                    <label htmlFor="lanIpAddress">LAN IP Address</label>
+                                    <label htmlFor="lanIpAddress">LAN IP address</label>
                                     <input onChange={this.handleInputChange}
                                            value={this.state.lanIpAddress}
                                            type="text"

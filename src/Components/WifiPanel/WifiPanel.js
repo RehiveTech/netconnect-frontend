@@ -97,7 +97,7 @@ class WifiPanel extends React.Component {
             <div className={"switch-panel__headline"}>
                 <Row start="xs">
                     <Col xs>
-                        Wifi
+                        Wi-Fi
                     </Col>
                     <Col xs className={"switch-panel__right"}>
                         <SwitchButton checked={service === "wifi_client" || service === "wifi"}

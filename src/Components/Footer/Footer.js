@@ -27,7 +27,7 @@ class Footer extends React.Component {
      */
     render() {
         return <div className="footer">
-            &copy; RehiveTech s.r.o.
+            &copy; RehiveTech spol. s r.o.
         </div>;
     }
 }
