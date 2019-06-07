@@ -1,0 +1,25 @@
+@font-face {
+  font-family: "custom-icons";
+  src: url("./fonts/custom-icons.eot?4c23aa71d7b4f031efc2b0783f44076e?#iefix") format("embedded-opentype"), url("./fonts/custom-icons.woff2?4c23aa71d7b4f031efc2b0783f44076e") format("woff2"), url("./fonts/custom-icons.woff?4c23aa71d7b4f031efc2b0783f44076e") format("woff"), url("./fonts/custom-icons.ttf?4c23aa71d7b4f031efc2b0783f44076e") format("truetype"), url("./fonts/custom-icons.svg?4c23aa71d7b4f031efc2b0783f44076e#custom-icons") format("svg"); }
+
+i[class^="icon-"]:before, i[class*=" icon-"]:before {
+  font-family: custom-icons !important;
+  font-style: normal;
+  font-weight: normal !important;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon-refresh-button:before {
+  content: "\f101"; }
+
+.icon-refresh:before {
+  content: "\f102"; }
+
+.icon-reuse:before {
+  content: "\f103"; }
+
+.icon-wifi:before {
+  content: "\f104"; }

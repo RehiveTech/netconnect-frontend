@@ -1,0 +1,123 @@
+// Default file for entire app
+@import "./stylesheet/colors.scss";
+@import "./stylesheet/icons.scss";
+@import "./stylesheet/fonts.scss";
+@import "./stylesheet/forms.scss";
+@import "./stylesheet/tables.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: lighten($green-go, 10%);
+  color: $white;
+}
+
+html,
+body {
+
+  background: $background-grey;
+  background-size: cover;
+  color: $black;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 0;
+  min-height: 100vh;
+  padding: 0;
+
+  .app-wrapper {
+    display: flex;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: $grey;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  margin-top: 0;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: 1.85rem;
+  margin-top: 0;
+  padding-top: 0;
+  font-weight: 600;
+  color: $white;
+}
+
+h2 {
+
+  color: $white;
+}
+
+
+a {
+  color: $black;
+
+  &.link {
+    color: $black;
+    font-weight: 700;
+    text-decoration: none;
+    text-shadow: 0 0 3px transparentize($black, .75);
+  }
+
+  &.image-link {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+.app-wrapper {
+  display: flex;
+  justify-content: center;
+  position: static;
+  transition: background .5s ease-in-out;
+  width: 100%;
+
+  .app-theme {
+    display: flex;
+    justify-content: center;
+    position: static;
+    transition: background .5s ease-in-out;
+    width: 100%;
+  }
+
+}
+
+
+.Toastify {
+
+  &__toast-container--top-left {
+    top: 6rem !important;
+  }
+
+  &__close-button {
+    align-items: center;
+  }
+
+  &__toast {
+
+    background: $wifi-green;
+    border-top: 1px solid rgba(255, 255, 255, .1);
+    color: white;
+    padding-right: 2rem;
+    font-weight: 500;
+
+    .Toastify__close-button {
+      color: $white;
+      align-items: center;
+    }
+
+  }
+}

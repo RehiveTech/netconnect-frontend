@@ -1,0 +1,16 @@
+@import "../../App/stylesheet/colors.scss";
+
+.net-connect-panel {
+
+  background: $white;
+  border-radius: 2px;
+  box-shadow: 0 15px 20px transparentize($grey, 0.8);
+  margin-top: 4rem;
+  padding: 0 0 1rem;
+
+  .settings-form{
+    padding: 1rem;
+  }
+}
+
+

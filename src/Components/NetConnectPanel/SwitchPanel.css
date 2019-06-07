@@ -1,0 +1,14 @@
+.switch-panel__right {
+  display: flex;
+  justify-content: flex-end; }
+
+.switch-panel__headline {
+  padding: 1rem;
+  background: #fff;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.23); }
+
+.switch-panel__inner-box {
+  background: #f7f7f7;
+  padding: 1rem;
+  box-shadow: 0 0 3px rgba(128, 128, 128, 0.2) inset; }

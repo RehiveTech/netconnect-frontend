@@ -1,0 +1,26 @@
+.shnyaga {
+  border-radius: 13px;
+  cursor: pointer;
+  display: inline-block;
+  transition: background .1s ease; }
+  .shnyaga::after {
+    background: #fff;
+    border-radius: 12px;
+    content: "";
+    display: block;
+    left: 4px;
+    top: 3px;
+    position: relative;
+    transition: all .2s ease-in-out; }
+  .shnyaga--normal {
+    height: 24px;
+    width: 48px; }
+  .shnyaga--normal:after {
+    height: 18px;
+    width: 18px; }
+  .shnyaga--normal.shnyaga--checked:after {
+    left: 26px;
+    top: 3px; }
+  .shnyaga--disabled {
+    background-color: #808080 !important;
+    cursor: not-allowed; }

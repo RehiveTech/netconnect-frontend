@@ -1,0 +1,10 @@
+[ignore]
+
+.*/mobile/.*
+[include]
+.*/src/.*
+[libs]
+.*/node_modules/.*
+[lints]
+
+[options]

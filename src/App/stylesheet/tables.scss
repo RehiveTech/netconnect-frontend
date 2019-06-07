@@ -1,0 +1,26 @@
+@import "colors.scss";
+
+table {
+
+  //border: 2px solid rgb(78, 110, 19);
+  border-collapse: collapse;
+  width: 100%;
+
+  th {
+    background: transparent;
+    color: $green-go;
+    padding: .5rem;
+    text-align: left;
+    text-shadow: 0 0 15px transparentize($green-no-1, .5), 0 0 3px $green-no-1;
+    text-transform: uppercase;
+  }
+
+  td {
+    padding: .5rem;
+  }
+
+  tr:nth-of-type(even) {
+    background: transparentize($green-no-1, .98);
+  }
+
+}

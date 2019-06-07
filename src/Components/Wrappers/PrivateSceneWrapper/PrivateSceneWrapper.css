@@ -1,0 +1,21 @@
+.private-scene-wrapper {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100%;
+  width: 100%; }
+  .private-scene-wrapper__content {
+    z-index: 1; }
+  .private-scene-wrapper__background {
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 0; }
+  .private-scene-wrapper > .container {
+    flex-grow: 1;
+    width: 100%; }
+  .private-scene-wrapper > .footer {
+    flex-grow: 0; }

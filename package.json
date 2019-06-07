@@ -1,0 +1,77 @@
+{
+  "name": "netconnect-frontend",
+  "version": "1.0.0",
+  "description": "NetConnect Frontend",
+  "main": "index.html",
+  "private": true,
+  "scripts": {
+    "flow": "flow",
+    "check": "npm-check -s -u",
+    "analyze": "source-map-explorer build/static/js/main.*",
+    "start": "react-scripts start",
+    "standard": "standard src/**/*.js",
+    "build": "./version.sh && react-scripts build",
+    "build-windows": "version.cmd && react-scripts build",
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "generate-icons": "icon-font-generator assets/icons/*.svg -o src/App/fonts/ --name custom-icons --csspath src/App/stylesheet/icons.scss --fontspath ./fonts/ ",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "stats": "npm run test && npm run report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RehiveTech/netconnect-frontend.git"
+  },
+  "keywords": [
+    "rehivetech",
+    "wifi",
+    "LTE",
+    "4G",
+    "connect"
+  ],
+  "author": "Filip Holicky",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^9.3.1",
+    "axios": "^0.18.1",
+    "del": "^3.0.0",
+    "enhanced-resolve": "^4.1.0",
+    "i18next": "^11.9.0",
+    "i18next-browser-languagedetector": "^2.2.3",
+    "icon-font-generator": "^2.1.10",
+    "moment": "^2.22.2",
+    "node-sass-chokidar": "^1.3.3",
+    "prop-types": "^15.6.2",
+    "react": "^16.6.0",
+    "react-container-dimensions": "^1.4.1",
+    "react-custom-scrollbars": "^4.2.1",
+    "react-dom": "^16.6.0",
+    "react-flexbox-grid": "^2.1.2",
+    "react-helmet": "^5.2.0",
+    "react-i18next": "^7.13.0",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-spinners": "^0.5.4",
+    "react-toastify": "^4.3.2",
+    "webpack": "^4.33.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "acorn-dynamic-import": "^4.0.0",
+    "babel-loader": "^8.0.4",
+    "enzyme": "^3.6.0",
+    "fs-extra": "^7.0.1",
+    "react-scripts": "^3.0.1",
+    "selenium-webdriver": "^4.0.0-alpha.1",
+    "source-map-explorer": "^1.6.0",
+    "standard": "^11.0.1"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

@@ -1,0 +1,22 @@
+@import "../../App/stylesheet/colors.scss";
+
+.switch-panel {
+
+  &__right {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__headline {
+    padding: 1rem;
+    background: $white;
+    font-weight: 500;
+    border-bottom: 1px solid transparentize($grey, .77);
+  }
+
+  &__inner-box {
+    background: $white-smoke;
+    padding: 1rem;
+    box-shadow: 0 0 3px transparentize($grey, 0.8) inset;
+  }
+}

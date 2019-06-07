@@ -1,0 +1,10 @@
+.info-panel {
+  padding: 1rem;
+  color: white;
+  font-weight: 500;
+  font-size: 0.85rem;
+  background: linear-gradient(45deg, #00c8ff 1%, #0077ff 100%); }
+  .info-panel--lte {
+    background: linear-gradient(45deg, #ff6d5a 1%, #ff0066 100%); }
+  .info-panel--wifi_client {
+    background: linear-gradient(45deg, #51ac5c 1%, #85c22d 100%); }

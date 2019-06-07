@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&subset=latin-ext");
+.text--success {
+  color: #e8ff00; }
+
+.text--center {
+  text-align: center; }
+
+.text--cursive {
+  font-style: italic; }
+
+.text--green {
+  color: #b3f900;
+  text-shadow: 0 0 15px rgba(61, 99, 0, 0.5), 0 0 3px #3d6300; }
+
+.text--left {
+  text-align: left; }
+
+.text--right {
+  text-align: right; }

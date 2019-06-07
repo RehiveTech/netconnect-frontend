@@ -1,0 +1,28 @@
+@import "colors.scss";
+
+.btn {
+
+  align-content: center;
+  align-items: center;
+  background: $wifi-green;
+  border: 0;
+  border-radius: 2px;
+  color: $white;
+  cursor: pointer;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: .85rem;
+  font-weight: 700;
+  line-height: 1.1;
+  padding: .45rem;
+  text-transform: uppercase;
+  transition: all .25s ease-in-out;
+
+  &--danger {
+    background: $red;
+  }
+
+  &:hover {
+
+  }
+}

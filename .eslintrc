@@ -1,0 +1,17 @@
+{
+  "extends": "react-app",
+  "rules": {
+    "id-length": [
+      "error",
+      {
+        "min": 3,
+        "exceptions": ["x", "i", "t", "id", "e", "en", "cs", "ns", "qs", "y", "z", "fk"]
+      }
+    ],
+    "semi": ["error", "always"],
+    "eol-last": "off",
+    "jsx-quotes": ["error", "prefer-double"],
+    "quotes": ["error", "double"],
+    "comma-dangle": "off"
+  }
+}

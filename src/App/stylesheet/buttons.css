@@ -1,0 +1,18 @@
+.btn {
+  align-content: center;
+  align-items: center;
+  background: #73ba3d;
+  border: 0;
+  border-radius: 2px;
+  color: #fff;
+  cursor: pointer;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: .85rem;
+  font-weight: 700;
+  line-height: 1.1;
+  padding: .45rem;
+  text-transform: uppercase;
+  transition: all .25s ease-in-out; }
+  .btn--danger {
+    background: #bf0000; }

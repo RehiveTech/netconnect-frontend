@@ -1,0 +1,4 @@
+build/*
+coverage/*
+my/static/js/*
+report/*
