@@ -96,8 +96,10 @@ class NetConnectPanel extends React.Component {
         });
     };
 
-
-    onChangeDHCP = () => {
+  /**
+   * On Change DHCP
+   */
+  onChangeDHCP = () => {
 
         this.setState({
             dhcpStatus: !this.state.dhcpStatus

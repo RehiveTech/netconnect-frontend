@@ -132,11 +132,11 @@ class SettingsForm extends React.Component {
          * @type {{}}
          */
         return <form onSubmit={this.onSubmit} className={"form text--left"}>
-            <h4>Wi-Fi Access Point (AP) Settings</h4>
+            <h3>Wi-Fi Access Point (AP) Settings</h3>
             {error}
           <FormGroup>
             <label htmlFor="ssid">SSID network name</label>
-            <input onChange={this.handleInputChange} value={"aurora-netconnect"} type="text" disabled={true} tabIndex={1}
+            <input onChange={this.handleInputChange} value={"aurora-netconnect"} type="text" disabled={true}
                    name="ssid" id="ssid"/>
           </FormGroup>
             <FormGroup>
@@ -155,7 +155,7 @@ class SettingsForm extends React.Component {
             </FormGroup>
             <div className="form--group text--center">
                 {(this.state.expectingResponse) ? <LoadingComponent/> :
-                    <button type="submit" tabIndex={2}
+                    <button type="submit" tabIndex={3}
                             onSubmit={this.onSubmit}
                             className="btn btn--animated">{t("button.SaveSettings")}</button>}
             </div>

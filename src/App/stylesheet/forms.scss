@@ -37,6 +37,12 @@
       outline-color: $white;
     }
 
+    &:disabled {
+      background: transparentize($grey, .97);
+      color: transparentize($black, .55);
+      cursor: not-allowed;
+    }
+
   }
 
   label {

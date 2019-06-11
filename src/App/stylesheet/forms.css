@@ -51,6 +51,12 @@
   .form select:focus,
   .form textarea:focus {
     outline-color: #fff; }
+  .form input:disabled,
+  .form select:disabled,
+  .form textarea:disabled {
+    background: rgba(128, 128, 128, 0.03);
+    color: rgba(0, 0, 0, 0.45);
+    cursor: not-allowed; }
 
 .form label {
   color: rgba(0, 0, 0, 0.4);

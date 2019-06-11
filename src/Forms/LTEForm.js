@@ -132,15 +132,26 @@ class LTEForm extends React.Component {
             {error}
             <FormGroup>
                 <label htmlFor="">APN</label>
-                <input onChange={this.handleInputChange} value={this.state.apn} type="text" tabIndex={1}
-                       name="apn" id="apn"
-                       autoFocus={true} placeholder={""}/>
+                <input onChange={this.handleInputChange}
+                       value={this.state.apn}
+                       type="text"
+                       tabIndex={1}
+                       name="apn"
+                       id="apn"
+                       autoFocus={true}
+                       placeholder={""}
+                />
             </FormGroup>
             <FormGroup>
                 <label htmlFor="">Number</label>
-                <input onChange={this.handleInputChange} value={this.state.number} type="text" tabIndex={2}
-                       name="number" id="number"
-                       placeholder={"Enter number"}/>
+                <input onChange={this.handleInputChange}
+                       value={this.state.number}
+                       type="text"
+                       tabIndex={2}
+                       name="number"
+                       id="number"
+                       placeholder={"Enter number"}
+                />
             </FormGroup>
             <div className="form--group text--center">
                 {(this.state.expectingResponse) ? <LoadingComponent/> :

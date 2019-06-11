@@ -9,5 +9,5 @@ export default {
     ApplyChanges: "Apply Changes",
     SelectNetwork: "Select Network",
     SaveSettings: "Save Settings",
-    UpdateDHCP: "Update DHCP",
+    SaveDHCP: "Save DHCP"
 };

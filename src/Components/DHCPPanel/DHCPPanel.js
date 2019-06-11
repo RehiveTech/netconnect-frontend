@@ -181,7 +181,7 @@ class DHCPPanel extends React.Component {
                                 </FormGroup>
                                 <FormGroup>
                                     <div className={"text--center"}>
-                                        <button className={"btn"}>{t("button.UpdateDHCP")}</button>
+                                        <button className={"btn"}>{t("button.SaveDHCP")}</button>
                                     </div>
                                 </FormGroup>
                             </Col>

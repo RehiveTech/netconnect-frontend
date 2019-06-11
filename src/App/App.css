@@ -96,6 +96,12 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
   .form select:focus,
   .form textarea:focus {
     outline-color: #fff; }
+  .form input:disabled,
+  .form select:disabled,
+  .form textarea:disabled {
+    background: rgba(128, 128, 128, 0.03);
+    color: rgba(0, 0, 0, 0.45);
+    cursor: not-allowed; }
 
 .form label {
   color: rgba(0, 0, 0, 0.4);
@@ -180,7 +186,7 @@ h3,
 h4,
 h5 {
   color: #808080;
-  font-weight: 500;
+  font-weight: 600;
   margin-top: 0;
   text-transform: uppercase; }
 
