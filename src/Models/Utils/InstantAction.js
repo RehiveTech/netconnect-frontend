@@ -24,6 +24,22 @@ class InstantAction {
         InstantAction.history.push(path);
     }
 
+	/**
+	 * Pure Dispatcher
+	 * @param data
+	 */
+	static dispatch(data) {
+		InstantAction.dispatcher(data);
+	}
+
+	/**
+	 * Initiate Dispatcher
+	 * @param dispatcher {func}
+	 */
+	static initiateDispatcher(dispatcher) {
+		InstantAction.dispatcher = dispatcher;
+	}
+
 }
 
 

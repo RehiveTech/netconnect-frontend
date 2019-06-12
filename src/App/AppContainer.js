@@ -4,6 +4,7 @@
 import React from "react";
 import InstantAction from "../Models/Utils/InstantAction";
 import LoadingComponent from "../Components/LoadingComponent";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import {withRouter} from "react-router";
 import {ToastContainer} from "react-toastify";
@@ -38,6 +39,8 @@ class AppContainer extends React.Component {
         super(props);
 
         InstantAction.initiateHistory(this.props.history);
+		InstantAction.initiateDispatcher(this.props.dispatch);
+
 
         this.state.loadingData = false;
 
@@ -74,6 +77,21 @@ class AppContainer extends React.Component {
 }
 
 /**
+ * This function maps the state to a
+ * prop called `state`.
+ *
+ * In larger apps it is often good
+ * to be more selective and only
+ * map the part of the state tree
+ * that is necessary.
+ */
+const mapStateToProps = state => (
+	{
+		app: state.app,
+	});
+
+
+/**
  * Exporting part of the React.Component file
  */
-export default withRouter(AppContainer);
+export default connect(mapStateToProps)(withRouter(AppContainer));

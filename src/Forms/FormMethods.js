@@ -14,6 +14,9 @@ export default class FormMethod{
         const value = target.type === "checkbox" ? target.checked : target.value;
         const name = target.name;
 
+
+
+
         FormMethod.self.setState({
             [name]: value
         }, () => {

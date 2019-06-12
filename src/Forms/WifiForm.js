@@ -2,12 +2,11 @@
 
 // Necessary Evil
 import React from "react";
-import PropTypes from "prop-types";
-import {translate} from "react-i18next";
-import LoadingComponent from "../Components/LoadingComponent";
-import FormMethod from "./FormMethods";
+import { translate } from "react-i18next";
 import FormGroup from "../Components/Form/FormGroup";
-
+import { connect } from "react-redux";
+import InstantAction from "../Models/Utils/InstantAction";
+import { setConfiguration } from "../App/App.actions";
 
 /**
  * @class WifiForm
@@ -15,155 +14,137 @@ import FormGroup from "../Components/Form/FormGroup";
  */
 class WifiForm extends React.Component {
 
-    /**
-     * PropTypes
-     * @type {{children: shim, videoCategories: *}}
-     */
-    static propTypes = {
-        config: PropTypes.object,
-        onSubmit: PropTypes.func.isRequired,
-    };
+	/**
+	 * State
+	 * @type {{formData: {}, expectingResponse: boolean, errorMessage: null}}
+	 */
+	state = {
+		expectingResponse: false,
+		errorMessage: null,
+		key: "",
+		ssid: "",
+	};
 
-    /**
-     * State
-     * @type {{formData: {}, expectingResponse: boolean, errorMessage: null}}
-     */
-    state = {
-        expectingResponse: false,
-        errorMessage: null,
-        key: "",
-        ssid: "",
-    };
+	/**
+	 * Component will mount
+	 */
+	componentWillMount () {
 
-    /**
-     * constructor
-     * @param props
-     */
-    constructor(props) {
-        super(props);
+		const { app } = this.props;
 
-        FormMethod.self = this;
-        this.handleInputChange = FormMethod.handleInputChange.bind(this);
-    }
+		this.setState({
+			ssid: app.config.wifi_ssid,
+			key: app.config.wifi_key,
+		});
+	}
 
-    /**
-     * Component will mount
-     */
-    componentWillMount() {
-        this.setState({
-            ...this.props.config.wifi,
-        });
-    }
+	/**
+	 *
+	 * @param nextProps
+	 * @param nextContext
+	 */
+	componentWillReceiveProps (nextProps: Readonly<P>, nextContext: any): void {
 
-    /**
-     *
-     * @param nextProps
-     * @param nextContext
-     */
-    componentWillReceiveProps(nextProps: Readonly<P>, nextContext: any): void {
+		if (this.props.app.config.wifi_ssid !== nextProps.app.config.wifi_ssid) {
 
-        console.log(nextProps.config.wifi.ssid);
+			this.setState({
+				ssid: nextProps.app.config.wifi_ssid
+			});
+		}
 
+	}
 
-        if(this.props.config.wifi.ssid !== nextProps.config.wifi.ssid){
+	/**
+	 * Handle Input Change
+	 * @param event
+	 */
+	handleInputChange = (event) => {
 
-            this.setState({
-                ssid: nextProps.config.wifi.ssid
-            });
-        }
+		const { app } = this.props;
+		const target = event.target;
+		const value = target.type === "checkbox" ? target.checked : target.value;
+		const name = target.name;
 
+		// Local save
+		this.setState({
+			[name]: value
+		}, () => {
 
-    }
+			// Save change to store
+			const data = {
+				...app.config,
+				wifi_key: this.state.key,
+				wifi_ssid: this.state.ssid,
+			};
 
-    /**
-     * On Switch
-     */
-    onSubmit = (e) => {
+			InstantAction.dispatch(setConfiguration(data));
+		});
+	};
 
-        e.preventDefault();
+	/**
+	 * Final Render
+	 * @returns {*}
+	 */
+	render () {
 
-        const {config, onSubmit} = this.props;
+		/**
+		 * @info Translation function, className
+		 */
+		const { t } = this.props;
+		/**
+		 * @info Error variable
+		 */
+		let error = "";
 
-        const LTEConfig = config.lte;
+		/**
+		 * @info Handling Error Message
+		 */
+		if (this.state.errorMessage !== null) {
+			error = <div style={{ color: "orange", fontWeight: 700 }}><i
+				className="icon-cube"/> {t("formError." + this.state.errorMessage)}</div>;
+		}
 
-        /**
-         * Data
-         * @type {{wifi_ssid: string, lte_apn: string, lte_number: *, wifi_dhcp: boolean, wifi_key: string, lan_dhcp: boolean}}
-         */
-        const data = {
-
-            lan_dhcp: true,
-            lte_apn: LTEConfig.apn,
-            lte_number: LTEConfig.number,
-            wifi_dhcp: true,
-            wifi_key: this.state.key,
-            wifi_ssid: this.state.ssid,
-            connection_type: "wifi",
-        };
-
-        // Submit changes to backend
-        onSubmit(data);
-    };
-
-    /**
-     * Final Render
-     * @returns {*}
-     */
-    render() {
-
-        console.log(this.state);
-
-        /**
-         * @info Translation function, className
-         */
-        const {t} = this.props;
-        /**
-         * @info Error variable
-         */
-        let error = "";
-
-        /**
-         * @info Handling Error Message
-         */
-        if (this.state.errorMessage !== null) {
-            error = <div style={{color: "orange", fontWeight: 700}}><i
-                className="icon-cube"/> {t("formError." + this.state.errorMessage)}</div>;
-        }
-
-        /**
-         * Final Output
-         * @type {{}}
-         */
-        return <form onSubmit={this.onSubmit} className={"form text--left"}>
-            {error}
-            <FormGroup>
-                <label htmlFor="">{"SSID network name"}</label>
-                <input onChange={this.handleInputChange}
-                       value={this.state.ssid}
-                       type="text"
-                       tabIndex={1}
-                       name="ssid"
-                       id="ssid"
-                       autoFocus={true}
-                       placeholder={""}/>
-            </FormGroup>
-            <FormGroup>
-                <label htmlFor="key">Password</label>
-                <input onChange={this.handleInputChange}
-                       value={this.state.key}
-                       type="text"
-                       tabIndex={2}
-                       name="key"
-                       id="key"
-                       placeholder={""}/>
-            </FormGroup>
-            <div className="form--group text--center">
-                {(this.state.expectingResponse) ? <LoadingComponent/> :
-                    <button type="submit" tabIndex={2}
-                            className="btn btn--animated">{t("button.SaveConfiguration")}</button>}
-            </div>
-        </form>;
-    }
+		/**
+		 * Final Output
+		 * @type {{}}
+		 */
+		return <form onSubmit={this.onSubmit} className={"form text--left"}>
+			{error}
+			<FormGroup>
+				<label htmlFor="">{"SSID network name"}</label>
+				<input onChange={this.handleInputChange}
+					   value={this.state.ssid}
+					   type="text"
+					   tabIndex={1}
+					   name="ssid"
+					   id="ssid"
+					   autoFocus={true}
+					   placeholder={""}/>
+			</FormGroup>
+			<FormGroup>
+				<label htmlFor="key">Password</label>
+				<input onChange={this.handleInputChange}
+					   value={this.state.key}
+					   type="text"
+					   tabIndex={2}
+					   name="key"
+					   id="key"
+					   placeholder={""}/>
+			</FormGroup>
+		</form>;
+	}
 }
 
-export default translate()(WifiForm);
+/**
+ * Map State To Props
+ * @param state
+ * @return {{app: (*|appReducer)}}
+ */
+const mapStateToProps = state => (
+	{
+		app: state.app,
+	});
+
+export default connect(mapStateToProps)(translate()(WifiForm));
+
+

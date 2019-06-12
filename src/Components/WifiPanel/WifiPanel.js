@@ -10,6 +10,9 @@ import "./WifiPanel.css";
 import SwitchButton from "../SwitchButton/SwitchButton";
 import WifiForm from "../../Forms/WifiForm";
 import BackendRequest from "../../Models/REST";
+import InstantAction from "../../Models/Utils/InstantAction";
+import { setConfiguration } from "../../App/App.actions";
+import { connect } from "react-redux";
 
 
 /**
@@ -38,25 +41,19 @@ class WifiPanel extends React.Component {
 
     /**
      * On network item click
-     * @param network
+     * @param networkSSID
      */
-    onSelectNetwork = (network) => {
+    onSelectNetwork = (networkSSID) => {
 
-        /**
-         * Rewrite old config state
-         * @type {{[p: string]: *}}
-         */
-        const newConfig = {
-            ...this.state.config,
-            wifi: {
-                ...this.state.config.wifi,
-                ssid: network
-            }
-        };
+    	const {app} = this.props;
 
-        this.setState({
-            config: newConfig
-        });
+		// Save change to store
+		const data = {
+			...app.config,
+			wifi_ssid: networkSSID,
+		};
+
+		InstantAction.dispatch(setConfiguration(data));
 
     };
 
@@ -135,4 +132,15 @@ class WifiPanel extends React.Component {
     }
 }
 
-export default translate()(WifiPanel);
+/**
+ * Map State To Props
+ * @param state
+ * @return {{app: (*|appReducer)}}
+ */
+const mapStateToProps = state => (
+	{
+		app: state.app,
+	});
+
+
+export default connect(mapStateToProps)(translate()(WifiPanel));

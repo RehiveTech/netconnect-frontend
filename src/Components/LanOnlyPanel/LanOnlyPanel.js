@@ -8,6 +8,9 @@ import {Col, Row} from "react-flexbox-grid";
 // Import component CSS
 import "./LanOnlyPanel.css";
 import SwitchButton from "../SwitchButton/SwitchButton";
+import { connect } from "react-redux";
+import InstantAction from "../../Models/Utils/InstantAction";
+import { setConfiguration } from "../../App/App.actions";
 
 
 /**
@@ -32,31 +35,21 @@ class LanOnlyPanel extends React.Component {
      */
     onSwitch = () => {
 
-        const {onSwitch, config, onSubmitChanges} = this.props;
-
-        const wifiConfig = config.wifi;
-        const lanConfig = config.lan;
-        const lteConfig = config.lte;
+        const {onSwitch, app} = this.props;
 
         /**
          * Data
          * @type {{wifi_ssid: string, lte_apn: string, lte_number: *, wifi_dhcp: boolean, wifi_key: string, lan_dhcp: boolean}}
          */
         const data = {
-            lan_dhcp: lanConfig.ipv4.dhcp,
-            lte_apn: lteConfig.apn,
-            lte_number: lteConfig.number,
-            wifi_dhcp: wifiConfig.ipv4.dhcp,
-            wifi_key: wifiConfig.key,
-            wifi_ssid: wifiConfig.ssid,
+			...app.config,
             connection_type: "lan"
         };
 
         // Switch LAN local state
         onSwitch("lan");
+        InstantAction.dispatch(setConfiguration(data));
 
-        // Submit changes to backend
-        onSubmitChanges(data);
     };
 
     /**
@@ -82,4 +75,15 @@ class LanOnlyPanel extends React.Component {
     }
 }
 
-export default translate()(LanOnlyPanel);
+/**
+ * Map State To Props
+ * @param state
+ * @return {{app: (*|appReducer)}}
+ */
+const mapStateToProps = state => (
+	{
+		app: state.app,
+	});
+
+
+export default connect(mapStateToProps)(translate()(LanOnlyPanel));
