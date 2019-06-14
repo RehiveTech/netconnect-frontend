@@ -23,8 +23,7 @@ class LTEPanel extends React.Component {
     static propTypes = {
         children: PropTypes.any,
         service: PropTypes.string,
-        config: PropTypes.object.isRequired,
-        onSubmitChanges: PropTypes.func.isRequired,
+
     };
 
     /**

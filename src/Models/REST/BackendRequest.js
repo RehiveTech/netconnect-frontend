@@ -179,7 +179,6 @@ class BackendRequestProto {
 
         let self = this;
 
-        console.log(process.env.REACT_APP_BACKEND);
 
         /**
          * Response parent

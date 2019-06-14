@@ -1,0 +1,10 @@
+.wifi-dhcp-panel {
+  border-bottom: 0; }
+  .wifi-dhcp-panel .switch-panel__headline {
+    border-bottom: 0;
+    background: transparent;
+    padding-left: 0;
+    padding-right: 0; }
+  .wifi-dhcp-panel .switch-panel__inner-box {
+    box-shadow: none;
+    padding: 0; }

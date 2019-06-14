@@ -2,7 +2,7 @@ export const SET_APP_LOADED = "@@NETCONNECT/SET_APP_LOADED";
 export const RESET_STORE = "@@NETCONNECT/RESET_STORE";
 export const SET_DHCP_SETTINGS = "@@NETCONNECT/SET_DHCP_SETTINGS";
 export const SET_CONFIGURATION = "@@NETCONNECT/SET_CONFIGURATION";
-
+export const SET_WIFI_DHCP_SETTINGS = "@@NETCONNECT/SET_WIFI_DHCP_SETTINGS";
 
 /**
  * Set App Loaded
@@ -29,5 +29,15 @@ export function setConfiguration (config: Object) {
  */
 export function setDHCP (config: Object) {
 	return {type: SET_DHCP_SETTINGS, config};
+}
+
+
+/**
+ * Set WiFi DHCP to store
+ * @param config
+ * @return {{type: string, config: Object}}
+ */
+export function setWiFiDHCP (config: Object) {
+	return {type: SET_WIFI_DHCP_SETTINGS, config};
 }
 

@@ -15,6 +15,7 @@
     margin: 5px 0;
     padding: 5px 10px;
     text-align: left;
+    border-radius: 2px;
     width: 100%;
 
     textarea {
@@ -41,6 +42,12 @@
       background: transparentize($grey, .97);
       color: transparentize($black, .55);
       cursor: not-allowed;
+    }
+
+    &.invalid{
+      border: 1px solid $red;
+      background: transparentize($red, .8);
+
     }
 
   }
@@ -78,6 +85,11 @@
         font-style: normal;
         text-align: left;
         text-transform: none;
+
+        &.invalid-label{
+          color: $red;
+          font-weight: 600;
+        }
       }
     }
   }
@@ -90,4 +102,10 @@
     color: $red;
     margin-left: .15rem;
   }
+}
+
+.invalid-label{
+  color: $red;
+  font-size: .75rem;
+  font-weight: 600;
 }

@@ -6,18 +6,18 @@ import PropTypes from "prop-types";
 import { translate } from "react-i18next";
 import { Col, Row } from "react-flexbox-grid";
 // Import component CSS
-import "./DHCPPanel.css";
+import "./WiFiDHCPPanel.css";
 import SwitchButton from "../SwitchButton/SwitchButton";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import InstantAction from "../../Models/Utils/InstantAction";
-import { setConfiguration, setDHCP } from "../../App/App.actions";
+import { setConfiguration, setWiFiDHCP } from "../../App/App.actions";
 import IPInput from "../IPInput";
 
 /**
- * @class DHCPPanel
+ * @class WiFiDHCPPanel
  */
-class DHCPPanel extends React.Component {
+class WiFiDHCPPanel extends React.Component {
 
 	/**
 	 * PropTypes
@@ -30,15 +30,15 @@ class DHCPPanel extends React.Component {
 
 	/**
 	 * State
-	 * @type {{netmask: string, primaryDNS: string, secondaryDNS: string, lanIpAddress: string, defaultGateway: string}}
+	 * @type {{netmask: string, primaryDNS: string, secondaryDNS: string, wifiIpAddress: string, defaultGateway: string}}
 	 */
 	state = {
-		lanIpAddress: "",
+		wifiIpAddress: "",
 		netmask: "",
 		defaultGateway: "",
 		primaryDNS: "",
 		secondaryDNS: "",
-		lan_dhcp: true,
+		wifi_dhcp: true,
 	};
 
 	/**
@@ -58,14 +58,14 @@ class DHCPPanel extends React.Component {
 
 			// Save change to store
 			const data = {
-				lan_dns1: this.state.primaryDNS,
-				lan_dns2: this.state.secondaryDNS,
-				lan_gw: this.state.defaultGateway,
-				lan_ip: this.state.lanIpAddress,
-				lan_netmask: this.state.netmask,
+				wifi_dns1: this.state.primaryDNS,
+				wifi_dns2: this.state.secondaryDNS,
+				wifi_gw: this.state.defaultGateway,
+				wifi_ip: this.state.wifiIpAddress,
+				wifi_netmask: this.state.netmask,
 			};
 
-			InstantAction.dispatch(setDHCP(data));
+			InstantAction.dispatch(setWiFiDHCP(data));
 		});
 	};
 
@@ -74,11 +74,11 @@ class DHCPPanel extends React.Component {
 		const { app } = this.props;
 
 		this.setState({
-			lan_dhcp: !this.state.lan_dhcp,
+			wifi_dhcp: !this.state.wifi_dhcp,
 		}, () => {
 			InstantAction.dispatch(setConfiguration({
 				...app.config,
-				lan_dhcp: this.state.lan_dhcp
+				wifi_dhcp: this.state.wifi_dhcp
 			}));
 		});
 
@@ -91,20 +91,20 @@ class DHCPPanel extends React.Component {
 
 		const { app } = this.props;
 
-		let status = app.config.lan_dhcp;
+		let status = app.config.wifi_dhcp;
 
 		if (!status) {
 			this.setState({
-				lanIpAddress: app.DHCPSettings.lan_ip,
-				netmask: app.DHCPSettings.lan_netmask,
-				defaultGateway: app.DHCPSettings.lan_gw,
-				primaryDNS: app.DHCPSettings.lan_dns1,
-				secondaryDNS: app.DHCPSettings.lan_dns2,
+				wifiIpAddress: app.WiFiDHCPSettings.wifi_ip,
+				netmask: app.WiFiDHCPSettings.wifi_netmask,
+				defaultGateway: app.WiFiDHCPSettings.wifi_gw,
+				primaryDNS: app.WiFiDHCPSettings.wifi_dns1,
+				secondaryDNS: app.WiFiDHCPSettings.wifi_dns2,
 			});
 		}
 
 		this.setState({
-			lan_dhcp: app.config.lan_dhcp
+			wifi_dhcp: app.config.wifi_dhcp
 		});
 	}
 
@@ -114,25 +114,25 @@ class DHCPPanel extends React.Component {
 	 */
 	render () {
 
-		return <div className="dhcp-panel switch-panel">
+		return <div className="wifi-dhcp-panel switch-panel">
 			<div className={"switch-panel__headline"}>
 				<Row start="xs">
 					<Col xs>
-						LAN DHCP
+						WiFi DHCP
 					</Col>
 					<Col xs className={"switch-panel__right"}>
-						<SwitchButton checked={this.state.lan_dhcp} onClick={this.onSwitch}/>
+						<SwitchButton checked={this.state.wifi_dhcp} onClick={this.onSwitch}/>
 					</Col>
 				</Row>
 			</div>
 
-			{!this.state.lan_dhcp ?
+			{!this.state.wifi_dhcp ?
 				<form className={"form"}>
 					<div className={"switch-panel__inner-box"}>
 						<Row>
 							<Col xs className=" text--left">
-								<IPInput label={"LAN IP address"} onChange={this.handleInputChange}
-										 value={this.state.lanIpAddress} property={"lanIpAddress"}/>
+								<IPInput label={"WiFi IP address"} onChange={this.handleInputChange}
+										 value={this.state.wifiIpAddress} property={"wifiIpAddress"}/>
 								<IPInput label={"Netmask"} onChange={this.handleInputChange} value={this.state.netmask}
 										 property={"netmask"}/>
 								<IPInput label={"Default gateway"} onChange={this.handleInputChange}
@@ -166,4 +166,4 @@ const mapStateToProps = state => (
 /**
  * Exporting part of the React.Component file
  */
-export default withRouter(connect(mapStateToProps)(translate()(DHCPPanel)));
+export default withRouter(connect(mapStateToProps)(translate()(WiFiDHCPPanel)));

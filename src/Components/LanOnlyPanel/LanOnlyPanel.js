@@ -27,7 +27,6 @@ class LanOnlyPanel extends React.Component {
         service: PropTypes.string,
         onSwitch: PropTypes.func.isRequired,
         config: PropTypes.object,
-        onSubmitChanges: PropTypes.func.isRequired,
     };
 
     /**

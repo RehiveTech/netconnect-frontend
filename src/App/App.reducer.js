@@ -1,4 +1,4 @@
-import { RESET_STORE, SET_APP_LOADED, SET_CONFIGURATION, SET_DHCP_SETTINGS, } from "./App.actions";
+import { RESET_STORE, SET_APP_LOADED, SET_CONFIGURATION, SET_DHCP_SETTINGS, SET_WIFI_DHCP_SETTINGS} from "./App.actions";
 
 /**
  * App Initial State
@@ -13,6 +13,13 @@ const INITIAL_STATE = {
 		lan_gw: null,
 		lan_ip: null,
 		lan_netmask: null,
+	},
+	WiFiDHCPSettings:{
+		wifi_dns1: null,
+		wifi_dns2: null,
+		wifi_gw: null,
+		wifi_ip: null,
+		wifi_netmask: null,
 	}
 };
 
@@ -36,6 +43,10 @@ export function appReducer (state: Object = INITIAL_STATE, action: any) {
 		case SET_DHCP_SETTINGS:
 			return Object.assign({}, state, {
 				DHCPSettings: action.config
+			});
+		case SET_WIFI_DHCP_SETTINGS:
+			return Object.assign({}, state, {
+				WiFiDHCPSettings: action.config
 			});
 		case RESET_STORE:
 			return INITIAL_STATE;

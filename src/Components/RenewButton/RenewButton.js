@@ -27,6 +27,11 @@ class RenewButton extends React.Component {
      * @returns {*}
      */
     render() {
+
+    	if(this.props.counter === 0){
+    		return "";
+		}
+
         return <div className="renew-button__wrapper">
             <button className="renew-button" onClick={this.props.onClick}>
                 <div>{this.props.counter}</div>

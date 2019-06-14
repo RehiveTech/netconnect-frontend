@@ -7,7 +7,7 @@ import BackendRequest from "../Models/REST";
 import NetConnectPanel from "../Components/NetConnectPanel/NetConnectPanel";
 import { connect } from "react-redux";
 import InstantAction from "../Models/Utils/InstantAction";
-import { setConfiguration, setDHCP } from "../App/App.actions";
+import { setConfiguration, setDHCP, setWiFiDHCP } from "../App/App.actions";
 
 /**
  * @class LandingScene
@@ -64,7 +64,19 @@ class LandingScene extends React.Component {
 					};
 
 					InstantAction.dispatch(setDHCP(DHCPSettings));
+				}
 
+				if(!config.wifi_dhcp){
+					let values = data.wifi.ipv4;
+
+					const wifiDHCPSettings = {
+						wifi_dns1: values.dns[0],
+						wifi_dns2: values.dns[1],
+						wifi_gw: values.gw,
+						wifi_ip: values.ip,
+						wifi_netmask: values.netmask,
+					};
+					InstantAction.dispatch(setWiFiDHCP(wifiDHCPSettings));
 				}
 
 
@@ -90,8 +102,6 @@ class LandingScene extends React.Component {
 			endpoint: "status",
 			self: this,
 			onSuccess: (response) => {
-
-				console.log(response.data);
 
 				this.setState({
 					status: response.data

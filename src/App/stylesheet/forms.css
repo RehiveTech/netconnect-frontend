@@ -30,6 +30,7 @@
   margin: 5px 0;
   padding: 5px 10px;
   text-align: left;
+  border-radius: 2px;
   width: 100%; }
   .form input textarea,
   .form select textarea,
@@ -57,6 +58,11 @@
     background: rgba(128, 128, 128, 0.03);
     color: rgba(0, 0, 0, 0.45);
     cursor: not-allowed; }
+  .form input.invalid,
+  .form select.invalid,
+  .form textarea.invalid {
+    border: 1px solid #bf0000;
+    background: rgba(191, 0, 0, 0.2); }
 
 .form label {
   color: rgba(0, 0, 0, 0.4);
@@ -86,6 +92,9 @@
       font-style: normal;
       text-align: left;
       text-transform: none; }
+      .form label.checkbox em.invalid-label {
+        color: #bf0000;
+        font-weight: 600; }
 
 .form__group {
   margin-bottom: 1rem; }
@@ -93,3 +102,8 @@
 .form__required {
   color: #bf0000;
   margin-left: .15rem; }
+
+.invalid-label {
+  color: #bf0000;
+  font-size: .75rem;
+  font-weight: 600; }

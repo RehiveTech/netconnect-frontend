@@ -20,7 +20,7 @@ export default class FormMethod{
         FormMethod.self.setState({
             [name]: value
         }, () => {
-            console.log(FormMethod.self.state);
+            // console.log(FormMethod.self.state);
         });
 
     };
