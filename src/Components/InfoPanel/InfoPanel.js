@@ -81,7 +81,7 @@ class InfoPanel extends React.Component {
 
 						{
 							service === "lte" &&
-							status.lte.status === "CONNECTED"
+							status.lte.status === "CONNECTED" && status.lte.operator_info !== undefined
 								?
 								<span>{status.lte.operator_info.operator}, {status.lte.modem_info.vendor} {status.lte.modem_info.product}, RSSI {status.lte.modem_signal.rssi}</span> : ""}
 						{(service === "wifi_client" || service === "wifi") &&
